@@ -48,6 +48,6 @@ bun dev
 
 
 
-This README.md provides a clear overview of your Hospital Web application, including its features, tech stack, setup instructions, and project structure. Feel free to customize it further based on your specific needs!
+This README.md provides a clear overview of your Workspace Web application, including its features, tech stack, setup instructions, and project structure. Feel free to customize it further based on your specific needs!
 
 
