@@ -8,7 +8,18 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Plus, ChevronLeft, ChevronRight } from "lucide-react";
 import { format, startOfWeek, endOfWeek, eachDayOfInterval, addMonths, subMonths } from "date-fns";
 
-const events = {
+interface Event {
+  id: number;
+  title: string;
+  time: string;
+  type: string;
+}
+
+interface EventsType {
+  [key: string]: Event[];
+}
+
+const events: EventsType = {
   "2024-03-20": [
     { id: 1, title: "Team Meeting", time: "10:00 AM", type: "work" },
     { id: 2, title: "Project Review", time: "2:00 PM", type: "work" },
@@ -105,12 +116,12 @@ export function CalendarPage() {
                   month={date}
                   className="rounded-md border"
                   components={{
-                    Day: ({ date }) => (
+                    Day: ({ date }: { date: Date }) => (
                       <div className="relative h-12 w-12 p-2">
                         <span>{format(date, "d")}</span>
                         {getEventsForDate(date).length > 0 && (
                           <div className="absolute bottom-1 left-1/2 -translate-x-1/2 flex gap-0.5">
-                            {getEventsForDate(date).slice(0, 3).map((_, i) => (
+                            {getEventsForDate(date).slice(0, 3).map((_: Event, i: number) => (
                               <div
                                 key={i}
                                 className="w-1 h-1 rounded-full bg-primary"
@@ -137,7 +148,7 @@ export function CalendarPage() {
                         </div>
                         <div className="text-lg">{format(day, "d")}</div>
                       </div>
-                      {getEventsForDate(day).map((event) => (
+                      {getEventsForDate(day).map((event: Event) => (
                         <div
                           key={event.id}
                           className="text-xs p-1 mb-1 rounded bg-primary/10"
@@ -158,18 +169,18 @@ export function CalendarPage() {
                     </h3>
                   </div>
                   <div className="space-y-2">
-                    {Array.from({ length: 24 }, (_, i) => (
+                    {Array.from({ length: 24 }, (_, i: number) => (
                       <div key={i} className="grid grid-cols-12 gap-2">
                         <div className="col-span-1 text-right text-sm text-muted-foreground">
                           {i === 0 ? "12 AM" : i < 12 ? `${i} AM` : i === 12 ? "12 PM" : `${i - 12} PM`}
                         </div>
                         <div className="col-span-11 border-l pl-2 min-h-[40px]">
                           {getEventsForDate(selectedDate)
-                            .filter((event) => {
+                            .filter((event: Event) => {
                               const [hour] = event.time.split(":");
                               return parseInt(hour) === i;
                             })
-                            .map((event) => (
+                            .map((event: Event) => (
                               <div
                                 key={event.id}
                                 className="bg-primary/10 p-2 rounded text-sm mb-1"
@@ -199,7 +210,7 @@ export function CalendarPage() {
                     <h4 className="text-sm font-medium">
                       {format(new Date(date), "EEEE, MMMM d")}
                     </h4>
-                    {dayEvents.map((event) => (
+                    {dayEvents.map((event: Event) => (
                       <div
                         key={event.id}
                         className="flex items-center justify-between p-2 rounded-lg border"

@@ -9,7 +9,7 @@ import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import { Slider } from "@/components/ui/slider";
 import { Calendar } from "@/components/ui/calendar";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
@@ -55,22 +55,13 @@ import {
   Bell,
   Check,
   ChevronDown,
-  Copy,
-  CreditCard,
   Github,
   Info,
-  Laptop,
-  LayoutGrid,
   LogOut,
   Mail,
-  MessageSquare,
-  Moon,
   Plus,
   Settings,
-  Sun,
   User,
-  UserPlus,
-  Users,
 } from "lucide-react";
 
 export function ComponentCatalog() {

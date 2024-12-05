@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import {
-  Heart,
   MessageCircle,
   MoreHorizontal,
   Share2,
