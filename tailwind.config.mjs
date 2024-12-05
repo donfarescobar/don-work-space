@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ['class'],
@@ -80,5 +82,18 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    plugin(function({ addBase, addComponents, addUtilities, theme }) {
+      addBase({
+        // Add your base styles here
+      })
+      addComponents({
+        // Add your component styles here
+      })
+      addUtilities({
+        // Add your custom utilities here
+      })
+    }),
+    require('tailwindcss-animate')
+  ],
 };
